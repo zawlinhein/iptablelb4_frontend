@@ -1,0 +1,9 @@
+#root {
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  min-height: 100vh; /* Ensure the app takes up the whole screen */
+  display: flex;
+  flex-direction: column;
+}
+

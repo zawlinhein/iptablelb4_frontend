@@ -1,6 +1,9 @@
-import { Box, Heading, Text, VStack } from '@chakra-ui/react';
+import { Box, Heading, Text, VStack, Button, useDisclosure } from '@chakra-ui/react';
+import UpdateFarmForm from './UpdateFarmForm';
 
-const FarmDetails = ({ farm }) => {
+const FarmDetails = ({ farm, onFarmUpdated }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   if (!farm) return null;
 
   return (
@@ -18,6 +21,8 @@ const FarmDetails = ({ farm }) => {
           </Box>
         ))}
       </VStack>
+      <Button onClick={onOpen} colorScheme="yellow" mt={4}>Update</Button>
+      <UpdateFarmForm isOpen={isOpen} onClose={onClose} onFarmUpdated={onFarmUpdated} farmData={farm} />
     </Box>
   );
 };

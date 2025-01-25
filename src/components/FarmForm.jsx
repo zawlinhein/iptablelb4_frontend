@@ -70,6 +70,11 @@ const FarmForm = ({ isOpen, onClose, onSubmit, initialData, title }) => {
     });
   };
 
+  const removeUpstreamField = (index) => {
+    const newUpstreams = farmData.upstreams.filter((_, i) => i !== index);
+    setFarmData({ ...farmData, upstreams: newUpstreams });
+  };
+
   const handleSubmit = async () => {
     if (!validate()) return;
 
@@ -105,8 +110,7 @@ const FarmForm = ({ isOpen, onClose, onSubmit, initialData, title }) => {
               onChange={handleInputChange}
             >
               <option value="round-robin">Round Robin</option>
-              <option value="least-connections">Least Connections</option>
-              <option value="ip-hash">IP Hash</option>
+              <option value="random">Random</option>
             </Select>
           </FormControl>
           <FormControl mt={4} isInvalid={errors.port}>
@@ -140,7 +144,11 @@ const FarmForm = ({ isOpen, onClose, onSubmit, initialData, title }) => {
                     onChange={(e) => handleUpstreamChange(index, e)}
                   />
                   {errors[`upstreams[${index}].port`] && <FormErrorMessage>{errors[`upstreams[${index}].port`]}</FormErrorMessage>}
+                  <Button colorScheme="red" onClick={() => removeUpstreamField(index)} mt={2}>
+                  Remove
+                </Button>
                 </FormControl>
+                
               </Box>
             ))}
             <Button onClick={addUpstreamField} mt={2}>
@@ -160,3 +168,4 @@ const FarmForm = ({ isOpen, onClose, onSubmit, initialData, title }) => {
 };
 
 export default FarmForm;
+

@@ -69,7 +69,7 @@ function App() {
 
   return (
     <Container>
-      <Heading as="h1" mb={4}>IP Tables Setup</Heading>
+      <Heading as="h1" mb={4}>Iptablelb4</Heading>
       {healthCheckFailed && (
         <Alert status="error" mb={4}>
           <AlertIcon />
@@ -88,7 +88,7 @@ function App() {
               </Stack>
             </Box>
             {selectedFarm?.server_farm === farm && (
-              <FarmDetails farm={selectedFarm} onFarmUpdated={onFarmUpdated} />
+              <Box w="100%" h="100%"><FarmDetails farm={selectedFarm} onFarmUpdated={onFarmUpdated} /></Box>
             )}
           </Box>
         ))}

@@ -60,15 +60,15 @@ const FarmDetails = ({ farm, onFarmUpdated }) => {
   if (!farm) return null;
 
   return (
-    <Box h="400px" w="500px" mt={8} borderWidth="1px" borderRadius="lg" p={4}>
+    <Box h="480px"  w="500px" mt={8} >
       {farm.upstreams ? (
-                <>
+                <Box h="400px" w="500px" borderWidth="1px" borderRadius="lg">
           <ReactFlow nodes={nodes} edges={edges} nodeTypes={{ customNode: CustomNode }}>
             <Background />
           </ReactFlow>
-          <Box mt={4}><Button onClick={onOpen} colorScheme="yellow" mt={4}>Update</Button></Box>
+          <Button onClick={onOpen} colorScheme="yellow" mt={4}>Update</Button>
           <UpdateFarmForm isOpen={isOpen} onClose={onClose} onFarmUpdated={onFarmUpdated} farmData={farm} />
-          </>
+          </Box>
       ) : (
         <Text>No upstream server under this farm</Text>
       )}
